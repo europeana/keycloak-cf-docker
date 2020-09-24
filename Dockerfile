@@ -24,6 +24,13 @@ COPY addon-jars keycloak/standalone/deployments
 RUN mkdir -p keycloak/themes/europeana
 COPY keycloak-theme keycloak/themes/europeana
 
+# Copy custom delete user REST module
+COPY module-jars/delete-user.jar /tmp/delete-user.jar
+
+RUN /opt/jboss/keycloak/bin/jboss-cli.sh --command="module add --name=eu.europeana.keycloak.rest.delete-user --resources=/tmp/delete-user.jar --dependencies=org.keycloak.keycloak-core,org.keycloak.keycloak-server-spi,org.keycloak.keycloak-server-spi-private,javax.ws.rs.api"
+
+RUN sed -i -- 's/classpath:${jboss.home.dir}\/providers\/\*/classpath:${jboss.home.dir}\/providers\/*<\/provider><provider>module:eu.europeana.keycloak.rest.delete-user/g'  /opt/jboss/keycloak/standalone/configuration/standalone-ha.xml
+
 # Copy log formatter script
 #COPY custom-scripts/ /opt/jboss/startup-scripts/
 
