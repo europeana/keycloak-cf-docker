@@ -1,0 +1,9 @@
+# ignore typescript-generated files
+*.js.map
+
+# ignore log files
+*.log
+
+# Don't ignore these
+!WelcomePageScripts.js
+!content.json
