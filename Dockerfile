@@ -1,5 +1,5 @@
 # Check that this version matches the one in the pom.xml!
-FROM jboss/keycloak:12.0.1
+FROM jboss/keycloak:12.0.2
 
 # Set workdir to jboss home
 WORKDIR /opt/jboss/
@@ -25,9 +25,9 @@ COPY bcrypt-dependencies keycloak/modules
 # Copy addons to the Wildfly deployment directory
 COPY addon-jars keycloak/standalone/deployments
 
-# Copy Europeana theme to keycloak/themes
-RUN mkdir -p keycloak/themes/europeana
-COPY keycloak-theme keycloak/themes/europeana
+# Copy Europeana.v2 theme to keycloak/themes
+RUN mkdir -p keycloak/themes/europeana.v2
+COPY keycloak-theme keycloak/themes/europeana.v2
 
 # Copy log formatter script
 COPY custom-scripts/ /opt/jboss/startup-scripts/
