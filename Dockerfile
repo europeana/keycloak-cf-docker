@@ -1,5 +1,5 @@
 # Check that this version matches the one in the pom.xml!
-FROM jboss/keycloak:12.0.4
+FROM jboss/keycloak:10.0.2
 
 # Set workdir to jboss home
 WORKDIR /opt/jboss/

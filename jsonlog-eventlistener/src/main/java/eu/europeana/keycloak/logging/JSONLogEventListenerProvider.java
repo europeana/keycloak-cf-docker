@@ -28,12 +28,12 @@ public class JSONLogEventListenerProvider implements EventListenerProvider {
 
     @Override
     public void onEvent(Event event) {
-        if (EventType.DELETE_ACCOUNT.equals(event.getType())) {
+//        if (EventType.DELETE_ACCOUNT.equals(event.getType())) {
 //            KeycloakContext keycloakContext = session.getContext();
 //            UserModel user = keycloakContext.getAuthenticationSession().getAuthenticatedUser();
-            logger.log(Logger.Level.ERROR, "PINGGGGG DELETE USER! --> " + toString(event) + "; user: " + event.getUserId());
+//            logger.log(Logger.Level.ERROR, "PINGGGGG DELETE USER! --> " + toString(event) + "; user: " + event.getUserId());
 //            logger.errorv("Event caught in {} module when deleting user {}", prefix, event.getUserId());
-        }
+//        }
         String msg = prefix + toString(event);
         logger.log(Logger.Level.INFO, msg);
     }
